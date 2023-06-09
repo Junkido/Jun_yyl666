@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html PUBLIC "
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>置服的誘惑</title>
+
+<link href="templatemo_style.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="css/coda-slider.css" type="text/css" charset="utf-8" />
+
+<script src="js/jquery-1.2.6.js" type="text/javascript"></script>
+<script src="js/jquery.scrollTo-1.3.3.js" type="text/javascript"></script>
+<script src="js/jquery.localscroll-1.2.5.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.serialScroll-1.2.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/coda-slider.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
+<style>
+    .image_wrapper {
+      cursor: pointer;
+    }
+    
+    #large-image {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90%;
+      max-height: 90%;
+    }
+    
+    .prev-button,
+    .next-button {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px;
+      background-color: #000;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    
+    .prev-button {
+      left: 10px;
+    }
+    
+    .next-button {
+      right: 10px;
+    }
+  </style>
+  <script>
+    var images = [];
+    var currentIndex = 0;
+    
+    function showImage(imageUrl) {
+      images = document.getElementsByClassName('image_wrapper');
+      
+      for (var i = 0; i < images.length; i++) {
+        if (images[i].getAttribute('onclick') === 'showImage("' + imageUrl + '")') {
+          currentIndex = i;
+          break;
+        }
+      }
+      
+      var largeImage = document.getElementById('large-image');
+      largeImage.src = imageUrl;
+      largeImage.style.display = 'block';
+      
+      updateNavigationButtons();
+    }
+    
+    function hideImage() {
+      var largeImage = document.getElementById('large-image');
+      largeImage.style.display = 'none';
+    }
+    
+    function showPreviousImage() {
+      currentIndex--;
+      
+      if (currentIndex < 0) {
+        currentIndex = images.length - 1;
+      }
+      
+      var imageUrl = images[currentIndex].getAttribute('onclick').replace('showImage("', '').replace('")', '');
+      showImage(imageUrl);
+    }
+    
+    function showNextImage() {
+      currentIndex++;
+      
+      if (currentIndex >= images.length) {
+        currentIndex = 0;
+      }
+      
+      var imageUrl = images[currentIndex].getAttribute('onclick').replace('showImage("', '').replace('")', '');
+      showImage(imageUrl);
+    }
+    
+    function updateNavigationButtons() {
+      var prevButton = document.getElementById('prev-button');
+      var nextButton = document.getElementById('next-button');
+      
+      if (images.length > 1) {
+        prevButton.style.display = 'block';
+        nextButton.style.display = 'block';
+      } else {
+        prevButton.style.display = 'none';
+        nextButton.style.display = 'none';
+      }
+    }
+  </script>
+</head>
+<body>
+
+<div id="slider">
+	<div id="templatemo_wrapper">
+
+		<div id="templatemo_social">
+        
+        </div> <!-- end of social -->
+        
+        <div id="templatemo_main">
+        	<div id="templatemo_sidebar">
+            	<div id="header"><h1><a href="#">Cafe and Bakery</a></h1></div>
+                
+                <div id="menu">
+                    <ul class="navigation">
+                    <li><a href="#home" class="selected">Home</a></li>
+                    <li><a href="#aboutus">理念</a></li>
+                    <li><a href="#blog">客家</a></li>
+					<li><a href="#Ai">女生的衣櫃</a></li>
+					<li><a href="#Ai2">男生的衣櫃</a></li>
+                    <li><a href="#contactus" class="last">服務</a></li>
+
+                    </ul>
+                </div>
+            </div> <!-- end of sidebar -->
+            
+           <div id="templatemo_content">
+            	<div class="scroll">
+	        		<div class="scrollContainer">
+                    
+                    <div class="panel" id="home">
+                     <img src="png/13.png" class="image_wrapper" alt="Image 13" />
+
+                    </div>
+                    <!-- end of home -->
+                    
+                    <div class="panel" id="aboutus">
+                       
+                        <h6><em>理念：讓使用者能應對任何社交場合，並結合客家特色，融合了本土文化與時尚趨勢。</em></h6>
+                         <h7><em>服務項目：妝容、髮型、穿搭、配件，提供整體造型塑造</em></h7>
+                        <div class="cleaner cleaner_h40"></div>
+                        <h3>Slogan:</h3>
+                        <blockquote>
+                        <h8>用最具熱忱的心「置」服你</h8>
+                    </div> <!-- end of about us -->
+                    
+                 
+                    
+                    <div class="panel" id="blog">
+                        <div class="post_box">
+                           
+                            <img src="png/1.1.jpg" class="image_wrapper" alt="Image 1" onclick="showImage('png/large/f1.1.jpg')">
+                            <img src="png/1.2.jpg" class="image_wrapper" alt="Image 1" onclick="showImage('png/large/f1.2.jpg')">
+                            <img src="png/1.3.jpg" class="image_wrapper" alt="Image 1" onclick="showImage('png/large/f1.3.jpg')">
+
+                            <div class="cleaner"></div>
+                        </div>
+                        
+                        <div class="post_box">
+                            <img src="png/2.1.jpg" class="image_wrapper" alt="Image 2" onclick="showImage('png/large/f2.1.jpg')">
+							 <img src="png/2.2.jpg" class="image_wrapper" alt="Image 2" onclick="showImage('png/large/f2.2.jpg')">
+                            <img src="png/2.3.jpg" class="image_wrapper" alt="Image 2" onclick="showImage('png/large/f2.3.jpg')">
+
+
+                            <div class="cleaner"></div>
+
+                        </div>
+						<div class="post_box">
+                            <img src="png/3.1.png" class="image_wrapper" alt="Image 3" onclick="showImage('png/large/f3.1.png')">
+							<img src="png/3.2.png" class="image_wrapper" alt="Image 3" onclick="showImage('png/large/f3.2.png')">
+                            <img src="png/3.3.png" class="image_wrapper" alt="Image 3" onclick="showImage('png/large/f3.3.png')">
+                            <img src="png/3.4.png" class="image_wrapper" alt="Image 3" onclick="showImage('png/large/f3.4.png')">
+
+                            <div class="cleaner"></div>
+
+                        </div>
+						
+                         <img id="large-image" onclick="hideImage()" />
+                         
+                    </div> <!-- end of gallery -->
+					
+					<div class="panel" id="Ai">
+                        <div class="post_box">
+                           
+                            <img src="png/4.1.jpg" class="image_wrapper" alt="Image 4" onclick="showImage('png/large/f4.1.jpg')">
+                            <img src="png/4.2.jpg" class="image_wrapper" alt="Image 4" onclick="showImage('png/large/f4.2.jpg')">
+                            <img src="png/4.3.jpg" class="image_wrapper" alt="Image 4" onclick="showImage('png/large/f4.3.jpg')">
+                            <img src="png/4.4.jpg" class="image_wrapper" alt="Image 4" onclick="showImage('png/large/f4.4.jpg')">
+
+                            <div class="cleaner"></div>
+                        </div>
+                        
+                        <div class="post_box">
+                            <img src="png/5.1.png" class="image_wrapper" alt="Image 5" onclick="showImage('png/large/f5.1.png')">
+							 <img src="png/5.2.png" class="image_wrapper" alt="Image 5" onclick="showImage('png/large/f5.2.png')">
+                            <img src="png/5.3.png" class="image_wrapper" alt="Image 5" onclick="showImage('png/large/f5.3.png')">
+                            <img src="png/5.4.png" class="image_wrapper" alt="Image 5" onclick="showImage('png/large/f5.4.png')">
+
+
+                            <div class="cleaner"></div>
+
+                        </div>
+                    <img id="large-image" onclick="hideImage()" />
+                    </div> <!-- end of gallery -->
+					
+					<div class="panel" id="Ai2">
+                        <div class="post_box">
+                           
+                            <img src="png/7.1.jpg" class="image_wrapper" alt="Image 7" onclick="showImage('png/large/f7.1.jpg')">
+                            <img src="png/7.2.jpg" class="image_wrapper" alt="Image 7" onclick="showImage('png/large/f7.2.jpg')">
+                            <img src="png/7.3.jpg" class="image_wrapper" alt="Image 7" onclick="showImage('png/large/f7.3.jpg')">
+                            <img src="png/7.4.jpg" class="image_wrapper" alt="Image 7" onclick="showImage('png/large/f7.4.jpg')">
+
+                            <div class="cleaner"></div>
+                        </div>
+						<div class="post_box">
+                           
+                            <img src="png/8.1.png" class="image_wrapper" alt="Image 8" onclick="showImage('png/large/f8.1.png')">
+                            <img src="png/8.2.png" class="image_wrapper" alt="Image 8" onclick="showImage('png/large/f8.2.png')">
+                            <img src="png/8.3.png" class="image_wrapper" alt="Image 8" onclick="showImage('png/large/f8.3.png')">
+                            <img src="png/8.4.png" class="image_wrapper" alt="Image 8" onclick="showImage('png/large/f8.4.png')">
+
+                            <div class="cleaner"></div>
+                        </div>
+                        
+                        <div class="post_box">
+                            <img src="png/9.1.png" class="image_wrapper" alt="Image 9" onclick="showImage('png/large/f9.1.png')">
+							 <img src="png/9.2.png" class="image_wrapper" alt="Image 9" onclick="showImage('png/large/f9.2.png')">
+                            <img src="png/9.3.png" class="image_wrapper" alt="Image 9" onclick="showImage('png/large/f9.3.png')">
+                            <img src="png/9.4.png" class="image_wrapper" alt="Image 9" onclick="showImage('png/large/f9.4.png')">
+
+
+                            <div class="cleaner"></div>
+
+                        </div>
+                        <img id="large-image" onclick="hideImage()" />
+
+                    </div> <!-- end of gallery -->
+				
+                    
+                    <div class="panel" id="contactus">
+                            <h1 style="text-align: center; font-size: 25px;">line QR</h1>
+                            <img src="png/Q.png" alt="Line-QR"><br>
+                    <li style="font-size: 25px;margin-top: 20px;text-align: center;"><a href="http://junkido2.pythonanywhere.com/"   class="last">【點我】！！</a></li>
+
+                        
+                        
+                    </div> <!-- end of contact us -->
+                    
+                    </div> <!-- end scrollContainer -->
+				</div>
+            </div> <!-- end of content -->
+            
+            <div class="cleaner">s</div>
+        </div> <!-- end of main -->
+    
+    	
+           
+        
+    </div> <!-- end of wrapper -->
+</div> <!-- end of slider -->
+
+</body>
+</html>
